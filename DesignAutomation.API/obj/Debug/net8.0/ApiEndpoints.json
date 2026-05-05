@@ -1,7 +1,240 @@
 [
   {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "ListBuckets",
+    "RelativePath": "api/aps/oss/buckets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "region",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "startAt",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DesignAutomation.API.Features.ApsOss.ViewModels.BucketListViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "CreateBucket",
+    "RelativePath": "api/aps/oss/buckets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "DesignAutomation.API.Features.ApsOss.Commands.CreateBucket.CreateBucketCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DesignAutomation.API.Features.ApsOss.ViewModels.BucketViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "GetBucket",
+    "RelativePath": "api/aps/oss/buckets/{bucketKey}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bucketKey",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DesignAutomation.API.Features.ApsOss.ViewModels.BucketViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "DeleteBucket",
+    "RelativePath": "api/aps/oss/buckets/{bucketKey}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bucketKey",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "ListObjects",
+    "RelativePath": "api/aps/oss/buckets/{bucketKey}/objects",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bucketKey",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "startAt",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DesignAutomation.API.Features.ApsOss.ViewModels.ObjectListViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "UploadObject",
+    "RelativePath": "api/aps/oss/buckets/{bucketKey}/objects",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bucketKey",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "objectKey",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DesignAutomation.API.Features.ApsOss.ViewModels.ObjectViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "DeleteObject",
+    "RelativePath": "api/aps/oss/buckets/{bucketKey}/objects/{objectKey}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bucketKey",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "objectKey",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DesignAutomation.API.Controllers.ApsOssController",
+    "Method": "GetSignedDownload",
+    "RelativePath": "api/aps/oss/buckets/{bucketKey}/objects/{objectKey}/download-url",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bucketKey",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "objectKey",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "minutesExpiration",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DesignAutomation.API.Features.ApsOss.ViewModels.SignedDownloadViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "DesignAutomation.API.Controllers.UsersController",
-    "Method": "GetAll",
+    "Method": "List",
     "RelativePath": "api/Users",
     "HttpMethod": "GET",
     "IsController": true,
@@ -9,7 +242,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DesignAutomation.API.DTOs.Users.UserDto, DesignAutomation.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[DesignAutomation.API.Features.Users.ViewModels.UserViewModel, DesignAutomation.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -35,7 +268,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "DesignAutomation.API.DTOs.Users.UserDto",
+        "Type": "DesignAutomation.API.Features.Users.ViewModels.UserViewModel",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -59,14 +292,14 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "DesignAutomation.API.DTOs.Users.UpdateUserDto",
+        "Name": "command",
+        "Type": "DesignAutomation.API.Features.Users.Commands.UpdateUser.UpdateUserCommand",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DesignAutomation.API.DTOs.Users.UserDto",
+        "Type": "DesignAutomation.API.Features.Users.ViewModels.UserViewModel",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -106,8 +339,8 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "DesignAutomation.API.DTOs.Users.ChangePasswordDto",
+        "Name": "command",
+        "Type": "DesignAutomation.API.Features.Users.Commands.ChangePassword.ChangeUserPasswordCommand",
         "IsRequired": true
       }
     ],
@@ -164,14 +397,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "DesignAutomation.API.DTOs.Users.LoginDto",
+        "Name": "command",
+        "Type": "DesignAutomation.API.Features.Users.Commands.Login.LoginUserCommand",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DesignAutomation.API.DTOs.Users.AuthResponseDto",
+        "Type": "DesignAutomation.API.Features.Users.ViewModels.AuthViewModel",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -191,7 +424,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "DesignAutomation.API.DTOs.Users.UserDto",
+        "Type": "DesignAutomation.API.Features.Users.ViewModels.UserViewModel",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -210,14 +443,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "DesignAutomation.API.DTOs.Users.RegisterDto",
+        "Name": "command",
+        "Type": "DesignAutomation.API.Features.Users.Commands.Register.RegisterUserCommand",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DesignAutomation.API.DTOs.Users.AuthResponseDto",
+        "Type": "DesignAutomation.API.Features.Users.ViewModels.AuthViewModel",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -34,12 +34,10 @@ E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\obj\Debug\net
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\obj\Debug\net8.0\DesignAutomation.API.pdb
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\obj\Debug\net8.0\DesignAutomation.API.genruntimeconfig.cache
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\obj\Debug\net8.0\ref\DesignAutomation.API.dll
-E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\AutoMapper.dll
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\Azure.Core.dll
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\Azure.Identity.dll
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\BCrypt.Net-Next.dll
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\FluentValidation.dll
-E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\Humanizer.dll
 E:\Programming\WEB\projects\Design Automation\DesignAutomation.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
