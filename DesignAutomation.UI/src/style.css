@@ -48,20 +48,35 @@ body {
   border: 2px solid transparent;
 }
 
-:focus-visible {
+a:focus-visible,
+button:not(.v-btn):focus-visible,
+[tabindex]:not(.v-input *):not(.v-btn):not(.v-list-item):focus-visible {
   outline: 2px solid #6366f1;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-.v-btn:focus-visible,
+.v-input *:focus,
+.v-input *:focus-visible,
+.v-field:focus,
+.v-field:focus-visible,
 .v-field:focus-within,
+.v-field input,
+.v-field input:focus,
 .v-field input:focus-visible,
+.v-field textarea,
+.v-field textarea:focus,
 .v-field textarea:focus-visible,
+.v-btn:focus,
+.v-btn:focus-visible,
+.v-checkbox-btn:focus,
 .v-checkbox-btn:focus-visible,
+.v-list-item:focus,
 .v-list-item:focus-visible,
+.v-tab:focus,
 .v-tab:focus-visible {
   outline: none !important;
+  outline-offset: 0 !important;
 }
 
 input:-webkit-autofill,
