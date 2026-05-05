@@ -38,6 +38,13 @@ export const useAuthStore = defineStore('auth', () => {
     localStorage.setItem(USER_KEY, JSON.stringify(u))
   }
 
+  function setToken(t: string, exp: string) {
+    token.value = t
+    expiresAt.value = exp
+    localStorage.setItem(TOKEN_KEY, t)
+    localStorage.setItem(EXPIRES_KEY, exp)
+  }
+
   function clearSession() {
     token.value = null
     expiresAt.value = null
@@ -84,6 +91,7 @@ export const useAuthStore = defineStore('auth', () => {
     const u = await usersApi.me()
     user.value = u
     localStorage.setItem(USER_KEY, JSON.stringify(u))
+    return u
   }
 
   function logout() {
@@ -101,6 +109,7 @@ export const useAuthStore = defineStore('auth', () => {
     login,
     register,
     refreshUser,
+    setToken,
     logout,
   }
 })

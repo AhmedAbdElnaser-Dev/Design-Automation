@@ -3,6 +3,7 @@ using System.Text;
 using DesignAutomation.API.Common.Behaviors;
 using DesignAutomation.API.Common.Identity;
 using DesignAutomation.API.Common.Middleware;
+using DesignAutomation.API.Common.OAuthState;
 using DesignAutomation.API.Data;
 using DesignAutomation.API.Data.Seed;
 using DesignAutomation.API.Models;
@@ -11,6 +12,7 @@ using DesignAutomation.API.Services.Aps;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -81,6 +83,15 @@ namespace DesignAutomation.API
                 var opts = sp.GetRequiredService<IOptions<ApsOptions>>().Value;
                 http.BaseAddress = new Uri(opts.BaseUrl);
             });
+            builder.Services.AddHttpClient<IApsOAuthService, ApsOAuthService>((sp, http) =>
+            {
+                var opts = sp.GetRequiredService<IOptions<ApsOptions>>().Value;
+                http.BaseAddress = new Uri(opts.BaseUrl);
+            });
+
+            builder.Services.AddDataProtection()
+                .SetApplicationName("DesignAutomation.API");
+            builder.Services.AddSingleton<IOAuthStateService, OAuthStateService>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

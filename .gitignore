@@ -1,1 +1,80 @@
+# ---- Visual Studio / Rider / VS Code ----
+.vs/
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
 *.vsidx
+*.dbmdl
+*.jfm
+
+# ---- .NET build output ----
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+*.tlog
+*.tlogs
+*.cache
+*.swp
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ---- ASP.NET ----
+*.pidb
+*.svclog
+*.scc
+ScaffoldingReadMe.txt
+Generated_Code/
+
+# ---- Test results ----
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# ---- ReSharper / NCrunch ----
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+_NCrunch_*
+*.ncrunch*
+
+# ---- NuGet ----
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+.nuget/
+
+# ---- Node / Vite ----
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---- Secrets ----
+*.pfx
+*.snk
+secrets.json
+appsettings.*.local.json

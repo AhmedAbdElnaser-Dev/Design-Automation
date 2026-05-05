@@ -8,32 +8,29 @@ const router = useRouter()
 const auth = useAuthStore()
 const error = ref<string | null>(null)
 
-onMounted(() => {
+onMounted(async () => {
   const token = route.query.token as string | undefined
   const expiresAt = route.query.expiresAt as string | undefined
-  const userJson = route.query.user as string | undefined
   const errParam = route.query.error as string | undefined
+  const redirect = (route.query.redirect as string) || '/'
 
   if (errParam) {
     error.value = errParam
     return
   }
 
-  if (!token || !expiresAt || !userJson) {
+  if (!token || !expiresAt) {
     error.value = 'Missing authentication response from Autodesk.'
     return
   }
 
   try {
-    const user = JSON.parse(decodeURIComponent(userJson))
-    auth.$patch({ token, expiresAt, user })
-    localStorage.setItem('da.auth.token', token)
-    localStorage.setItem('da.auth.expiresAt', expiresAt)
-    localStorage.setItem('da.auth.user', JSON.stringify(user))
-    const redirect = (route.query.redirect as string) || '/'
+    auth.setToken(token, expiresAt)
+    await auth.refreshUser()
     router.replace(redirect)
-  } catch {
-    error.value = 'Invalid authentication response.'
+  } catch (e) {
+    error.value = (e as Error)?.message ?? 'Could not load your profile.'
+    auth.logout()
   }
 })
 </script>
