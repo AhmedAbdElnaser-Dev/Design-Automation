@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DesignAutomation.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c709ec68d7387fb12e05206956d55bf836ffa3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e70ab364d64f2a623c4330c0412fdc5b0172a180")]
 [assembly: System.Reflection.AssemblyProductAttribute("DesignAutomation.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DesignAutomation.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
