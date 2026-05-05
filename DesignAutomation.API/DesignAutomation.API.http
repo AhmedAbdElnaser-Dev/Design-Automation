@@ -1,0 +1,6 @@
+@DesignAutomation.API_HostAddress = http://localhost:5070
+
+GET {{DesignAutomation.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
