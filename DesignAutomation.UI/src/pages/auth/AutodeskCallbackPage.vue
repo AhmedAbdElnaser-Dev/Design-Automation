@@ -39,16 +39,60 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-card max-width="420" width="100%" elevation="2" rounded="lg" class="pa-6">
+  <div class="callback">
     <template v-if="!error">
-      <div class="d-flex flex-column align-center py-6">
-        <v-progress-circular indeterminate color="primary" size="48" class="mb-4" />
-        <p class="text-body-1">Completing Autodesk sign-in...</p>
+      <div class="callback__spinner">
+        <v-progress-circular indeterminate color="primary" size="56" width="3" />
       </div>
+      <h2 class="callback__title">Completing sign-in</h2>
+      <p class="callback__sub">Securing your Autodesk session…</p>
     </template>
+
     <template v-else>
-      <v-alert type="error" variant="tonal" class="mb-4">{{ error }}</v-alert>
-      <v-btn color="primary" block :to="{ name: 'login' }">Back to sign in</v-btn>
+      <div class="callback__error-icon">
+        <v-icon icon="mdi-alert-circle-outline" size="32" />
+      </div>
+      <h2 class="callback__title">Sign-in failed</h2>
+      <p class="callback__sub">{{ error }}</p>
+      <v-btn color="primary" size="large" :to="{ name: 'login' }" class="mt-4">
+        Back to sign in
+      </v-btn>
     </template>
-  </v-card>
+  </div>
 </template>
+
+<style scoped>
+.callback {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+}
+.callback__spinner {
+  margin-bottom: 24px;
+}
+.callback__error-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  color: rgb(var(--v-theme-error));
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+}
+.callback__title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgb(var(--v-theme-on-surface));
+  margin: 0 0 6px;
+}
+.callback__sub {
+  font-size: 14.5px;
+  color: rgb(var(--v-theme-on-surface-variant));
+  margin: 0;
+  max-width: 320px;
+}
+</style>
