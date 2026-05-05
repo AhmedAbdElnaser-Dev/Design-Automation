@@ -1,7 +1,6 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
+using DesignAutomation.API.Services.Aps.Models;
 using Microsoft.Extensions.Options;
 
 namespace DesignAutomation.API.Services.Aps;
@@ -38,18 +37,18 @@ public class ApsOssService : IApsOssService
                ?? new BucketListResponse();
     }
 
-    public async Task<BucketDetails> GetBucketDetailsAsync(string bucketKey, CancellationToken ct = default)
+    public async Task<BucketDetailsResponse> GetBucketDetailsAsync(string bucketKey, CancellationToken ct = default)
     {
         using var req = await BuildAsync(HttpMethod.Get, $"/oss/v2/buckets/{bucketKey}/details", ct);
         using var resp = await _http.SendAsync(req, ct);
         await EnsureSuccess(resp, ct);
-        return await resp.Content.ReadFromJsonAsync<BucketDetails>(cancellationToken: ct)
+        return await resp.Content.ReadFromJsonAsync<BucketDetailsResponse>(cancellationToken: ct)
                ?? throw new InvalidOperationException("Empty bucket details response.");
     }
 
-    public async Task<BucketDetails> CreateBucketAsync(string bucketKey, string? policyKey = null, string? region = null, CancellationToken ct = default)
+    public async Task<BucketDetailsResponse> CreateBucketAsync(string bucketKey, string? policyKey = null, string? region = null, CancellationToken ct = default)
     {
-        var body = new CreateBucketRequest
+        var body = new CreateBucketApsRequest
         {
             BucketKey = bucketKey.ToLowerInvariant(),
             PolicyKey = policyKey ?? _options.DefaultBucketPolicy,
@@ -62,7 +61,7 @@ public class ApsOssService : IApsOssService
 
         using var resp = await _http.SendAsync(req, ct);
         await EnsureSuccess(resp, ct);
-        return await resp.Content.ReadFromJsonAsync<BucketDetails>(cancellationToken: ct)
+        return await resp.Content.ReadFromJsonAsync<BucketDetailsResponse>(cancellationToken: ct)
                ?? throw new InvalidOperationException("Empty create-bucket response.");
     }
 
@@ -87,7 +86,7 @@ public class ApsOssService : IApsOssService
                ?? new ObjectListResponse();
     }
 
-    public async Task<ObjectDetails> UploadObjectAsync(string bucketKey, string objectKey, Stream content, long contentLength, string? contentType = null, CancellationToken ct = default)
+    public async Task<ObjectDetailsResponse> UploadObjectAsync(string bucketKey, string objectKey, Stream content, long contentLength, string? contentType = null, CancellationToken ct = default)
     {
         var totalParts = (int)Math.Max(1, (contentLength + ChunkSize - 1) / ChunkSize);
         var encodedObject = Uri.EscapeDataString(objectKey);
@@ -144,7 +143,7 @@ public class ApsOssService : IApsOssService
         finalReq.Content = JsonContent.Create(complete);
         using var finalResp = await _http.SendAsync(finalReq, ct);
         await EnsureSuccess(finalResp, ct);
-        return await finalResp.Content.ReadFromJsonAsync<ObjectDetails>(cancellationToken: ct)
+        return await finalResp.Content.ReadFromJsonAsync<ObjectDetailsResponse>(cancellationToken: ct)
                ?? throw new InvalidOperationException("Empty finalize-upload response.");
     }
 
