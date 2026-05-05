@@ -3,6 +3,7 @@ using DesignAutomation.API.Data;
 using DesignAutomation.API.Data.Seed;
 using DesignAutomation.API.Models;
 using DesignAutomation.API.Services;
+using DesignAutomation.API.Services.Aps;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,19 @@ namespace DesignAutomation.API
 
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+            builder.Services.Configure<ApsOptions>(builder.Configuration.GetSection(ApsOptions.SectionName));
+            builder.Services.AddMemoryCache();
+            builder.Services.AddHttpClient<IApsAuthService, ApsAuthService>((sp, http) =>
+            {
+                var opts = sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<ApsOptions>>().Value;
+                http.BaseAddress = new Uri(opts.BaseUrl);
+            });
+            builder.Services.AddHttpClient<IApsOssService, ApsOssService>((sp, http) =>
+            {
+                var opts = sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<ApsOptions>>().Value;
+                http.BaseAddress = new Uri(opts.BaseUrl);
+            });
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
